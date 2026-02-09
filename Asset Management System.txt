@@ -1,0 +1,26 @@
+Asset Management System
+1. Understanding of Requirements
+The client requires a centralized software solution to manage and track company-owned physical assets. The primary pain point is accountability: the system must clearly show the "chain of custody" for every item, identifying exactly which employee is currently in possession of a specific asset.
+
+2. Creative Freedoms & Scope
+Product Name: EquipTrack (Placeholder).
+Scope: The initial version will be a Web-based Management Portal focused on internal administrative use rather than a public-facing store.
+UI: Minimalist "Dashboard" style for quick data entry.
+
+3. Assumptions Made
+Single Assignment: An asset can only be assigned to one employee at a time.
+Employee Database: The client has an existing list of employees (or we will provide a way to manually add them).
+User Roles: There are "Admins" and "Employees".
+
+4. Feature List
+Asset Inventory Dashboard: A bird's-eye view of all company property (Laptops, Chairs, Keyboards, etc.) with status indicators (Available, Assigned, In-Repair).
+Employee Directory: A searchable list of staff members linked to the assets they are currently holding.
+Check-In / Check-Out System: A simple workflow to assign an item to a user with a timestamp and digital "sign-off."
+History Logs: A searchable audit trail for each asset showing its previous owners and maintenance history.
+Automated Notifications: Email alerts for when an asset is overdue for return or due for a scheduled maintenance check.
+
+5. Questions 
+Are there specific categories of assets you want to track beyond IT hardware (e.g., furniture, vehicles, software licenses)?
+Do you need to record the physical condition of an item (e.g., "Scratched screen") during the hand-off?
+How many total assets and employees are we looking to manage? (This helps determine if we need bulk-upload features).
+Should employees be able to log in and see what they are responsible for, or is this for Admin eyes only?
