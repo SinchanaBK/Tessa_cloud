@@ -1,0 +1,165 @@
+1.
+
+Feature: Add a new employee
+
+API Endpoint: POST /api/users
+
+Database Action: INSERT a new row into the users table with name, email, department_id, role, password_hash, and status.
+
+2.
+
+Feature: View all employees
+
+API Endpoint: GET /api/users
+
+Database Action: SELECT all rows from the users table ordered by created_at DESC.
+
+3.
+
+Feature: View single employee
+
+API Endpoint: GET /api/users/{id}
+
+Database Action: SELECT * FROM users WHERE id = {id}.
+
+4.
+
+Feature: Update employee details
+
+API Endpoint: PUT /api/users/{id}
+
+Database Action: UPDATE users SET name, email, department_id, role WHERE id = {id}.
+
+5.
+
+Feature: Deactivate employee
+
+API Endpoint: PATCH /api/users/{id}/deactivate
+
+Database Action: UPDATE users SET status = 'Inactive' WHERE id = {id}.
+
+6.
+
+Feature: Add new asset
+
+API Endpoint: POST /api/assets
+
+Database Action: INSERT into assets (asset_name, asset_type, serial_number, purchase_date, warranty_expiry, status).
+
+7.
+
+Feature: View all assets
+
+API Endpoint: GET /api/assets
+
+Database Action: SELECT * FROM assets ORDER BY created_at DESC.
+
+8.
+
+Feature: View asset details
+
+API Endpoint: GET /api/assets/{id}
+
+Database Action: SELECT * FROM assets WHERE id = {id}.
+
+9.
+
+Feature: Update asset details
+
+API Endpoint: PUT /api/assets/{id}
+
+Database Action: UPDATE assets SET asset_name, asset_type, serial_number WHERE id = {id}.
+
+10.
+
+Feature: Mark asset as broken
+
+API Endpoint: PATCH /api/assets/{id}/mark-broken
+
+Database Action: UPDATE assets SET status = 'Broken' WHERE id = {id}.
+
+11.
+
+Feature: Mark asset as available
+
+API Endpoint: PATCH /api/assets/{id}/mark-available
+
+Database Action: UPDATE assets SET status = 'Available' WHERE id = {id}.
+
+12.
+
+Feature: Assign asset to employee
+
+API Endpoint: POST /api/assignments
+
+Database Action:
+INSERT into assignments (user_id, asset_id, assigned_date, expected_return_date, status)
+AND UPDATE assets SET status = 'Assigned'.
+
+13.
+
+Feature: Return asset
+
+API Endpoint: PATCH /api/assignments/{id}/return
+
+Database Action:
+UPDATE assignments SET return_date = CURRENT_TIMESTAMP, status = 'Returned' WHERE id = {id}
+AND UPDATE assets SET status = 'Available'.
+
+14.
+
+Feature: View all assignments
+
+API Endpoint: GET /api/assignments
+
+Database Action: SELECT * FROM assignments ORDER BY assigned_date DESC.
+
+15.
+
+Feature: View employee assignment history
+
+API Endpoint: GET /api/users/{id}/assignments
+
+Database Action: SELECT * FROM assignments WHERE user_id = {id}.
+
+16.
+
+Feature: View asset assignment history
+
+API Endpoint: GET /api/assets/{id}/assignments
+
+Database Action: SELECT * FROM assignments WHERE asset_id = {id}.
+
+17.
+
+Feature: Record maintenance request
+
+API Endpoint: POST /api/maintenance
+
+Database Action: INSERT into maintenance_requests (asset_id, issue_description, reported_by, status).
+
+18.
+
+Feature: Complete maintenance
+
+API Endpoint: PATCH /api/maintenance/{id}/complete
+
+Database Action:
+UPDATE maintenance_requests SET status = 'Completed', completed_at = CURRENT_TIMESTAMP
+AND UPDATE assets SET status = 'Available'.
+
+19.
+
+Feature: User login
+
+API Endpoint: POST /api/auth/login
+
+Database Action: SELECT user WHERE email = provided_email AND verify password_hash.
+
+20.
+
+Feature: Change password
+
+API Endpoint: PATCH /api/auth/change-password
+
+Database Action: UPDATE users SET password_hash = new_hash WHERE id = authenticated_user_id.
